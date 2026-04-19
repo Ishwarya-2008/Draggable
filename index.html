@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Shopping Cart</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1><i class="fa-solid fa-cart-shopping"></i> Drag & Drop Store</h1>
+
+    <div class="container">
+        <div class="store">
+            <h2><i class="fa-solid fa-store"></i> Store Items</h2>
+            <div class="products">
+                <div class="item" data-name="Apple" data-price="40" data-icon="fa-apple-whole">
+                    <span class="emoji"><i class="fa-solid fa-apple-whole"></i></span>
+                    <span class="name">Apple</span>
+                    <span class="price">₹40</span>
+                </div>
+                <div class="item" data-name="Banana" data-price="30" data-icon="fa-lemon">
+                    <span class="emoji"><i class="fa-solid fa-lemon"></i></span>
+                    <span class="name">Banana</span>
+                    <span class="price">₹30</span>
+                </div>
+                <div class="item" data-name="Milk" data-price="55" data-icon="fa-glass-water">
+                    <span class="emoji"><i class="fa-solid fa-glass-water"></i></span>
+                    <span class="name">Milk</span>
+                    <span class="price">₹55</span>
+                </div>
+                <div class="item" data-name="Bread" data-price="35" data-icon="fa-bread-slice">
+                    <span class="emoji"><i class="fa-solid fa-bread-slice"></i></span>
+                    <span class="name">Bread</span>
+                    <span class="price">₹35</span>
+                </div>
+                <div class="item" data-name="Eggs" data-price="70" data-icon="fa-egg">
+                    <span class="emoji"><i class="fa-solid fa-egg"></i></span>
+                    <span class="name">Eggs</span>
+                    <span class="price">₹70</span>
+                </div>
+                <div class="item" data-name="Rice" data-price="120" data-icon="fa-bowl-rice">
+                    <span class="emoji"><i class="fa-solid fa-bowl-rice"></i></span>
+                    <span class="name">Rice</span>
+                    <span class="price">₹120</span>
+                </div>
+                <div class="item" data-name="Sugar" data-price="45" data-icon="fa-jar">
+                    <span class="emoji"><i class="fa-solid fa-jar"></i></span>
+                    <span class="name">Sugar</span>
+                    <span class="price">₹45</span>
+                </div>
+                <div class="item" data-name="Tea" data-price="60" data-icon="fa-mug-hot">
+                    <span class="emoji"><i class="fa-solid fa-mug-hot"></i></span>
+                    <span class="name">Tea</span>
+                    <span class="price">₹60</span>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <h2><i class="fa-solid fa-basket-shopping"></i> Your Cart</h2>
+            <div class="cart-items" id="cart-drop">
+                <div class="placeholder"><i class="fa-solid fa-bag-shopping"></i> Drag items here to add</div>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="amount" id="total">₹0</span>
+            </div>
+            <button class="clear-btn" id="clear-cart">Clear Cart</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
