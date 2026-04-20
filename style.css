@@ -249,7 +249,6 @@ h1 .fa-cart-shopping {
     display: none;
 }
 
-/* Sortable styles */
 .drag-handle {
     cursor: grab;
     color: #a0aec0;
