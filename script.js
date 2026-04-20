@@ -12,8 +12,6 @@ $(function () {
     $("#cart-drop").sortable({
         items: ".cart-item",
         cursor: "grabbing",
-        placeholder: "sort-placeholder",
-        tolerance: "pointer",
         update: function () {
             const newOrder = [];
             $("#cart-drop .cart-item").each(function () {
