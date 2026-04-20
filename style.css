@@ -249,6 +249,32 @@ h1 .fa-cart-shopping {
     display: none;
 }
 
+/* Sortable styles */
+.drag-handle {
+    cursor: grab;
+    color: #a0aec0;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.drag-handle:hover {
+    color: #4a5568;
+}
+
+.cart-item.ui-sortable-helper {
+    background: #ebf8ff;
+    border-color: #3182ce;
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+.sort-placeholder {
+    background: #e2e8f0;
+    border: 2px dashed #a0aec0;
+    border-radius: 8px;
+    height: 42px;
+    margin-bottom: 8px;
+}
+
 .clear-btn:hover {
     background: #c53030;
 }

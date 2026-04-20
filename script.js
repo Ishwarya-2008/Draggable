@@ -1,7 +1,6 @@
 $(function () {
     let cartItems = [];
 
-    // Make store items draggable
     $(".item").draggable({
         helper: "clone",
         revert: "invalid",
@@ -10,20 +9,34 @@ $(function () {
         zIndex: 1000
     });
 
-    // Make cart droppable
-    $("#cart-drop").droppable({
+    $("#cart-drop").sortable({
+        items: ".cart-item",
+        cursor: "grabbing",
+        placeholder: "sort-placeholder",
+        tolerance: "pointer",
+        update: function () {
+            const newOrder = [];
+            $("#cart-drop .cart-item").each(function () {
+                const index = $(this).data("index");
+                newOrder.push(cartItems[index]);
+            });
+            cartItems = newOrder;
+            renderCart();
+        }
+    }).droppable({
         accept: ".item",
         drop: function (event, ui) {
-            const name = ui.draggable.data("name");
-            const price = parseInt(ui.draggable.data("price"));
-            const icon = ui.draggable.data("icon");
+            if (ui.draggable.hasClass("item")) {
+                const name = ui.draggable.data("name");
+                const price = parseInt(ui.draggable.data("price"));
+                const icon = ui.draggable.data("icon");
 
-            cartItems.push({ name, price, icon });
-            renderCart();
+                cartItems.push({ name, price, icon });
+                renderCart();
+            }
         }
     });
 
-    // Render cart items
     function renderCart() {
         const cartDrop = $("#cart-drop");
         cartDrop.empty();
@@ -33,7 +46,8 @@ $(function () {
             $("#clear-cart").hide();
         } else {
             cartItems.forEach(function (item, index) {
-                const $el = $('<div class="cart-item">' +
+                const $el = $('<div class="cart-item" data-index="' + index + '">' +
+                    '<span class="drag-handle"><i class="fa-solid fa-grip-vertical"></i></span>' +
                     '<div class="info"><i class="fa-solid ' + item.icon + '"></i> <span>' + item.name + '</span> — <span>₹' + item.price + '</span></div>' +
                     '<button class="remove-btn" data-index="' + index + '">✕</button>' +
                     '</div>');
@@ -42,21 +56,18 @@ $(function () {
             $("#clear-cart").show();
         }
 
-        // Update total
         const total = cartItems.reduce(function (sum, item) {
             return sum + item.price;
         }, 0);
         $("#total").text("₹" + total);
     }
 
-    // Remove single item
     $(document).on("click", ".remove-btn", function () {
         const index = $(this).data("index");
         cartItems.splice(index, 1);
         renderCart();
     });
 
-    // Clear all
     $("#clear-cart").on("click", function () {
         cartItems = [];
         renderCart();
